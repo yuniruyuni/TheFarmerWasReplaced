@@ -1,19 +1,7 @@
-dirs = [North, South, East, West]
-def dirs_without(d):
-	ret = []
-	for dir in dirs:
-		if dir != d:
-			ret.append(dir)
-	return ret
-	
-def anti(d):
-	dirs = {
-		North: South,
-		South: North,
-		East: West,
-		West: East,
-	}
-	return dirs[d]
+import pos
+
+def amount():
+	return num_items(Items.Gold)
 
 def search(d):
 	ok = move(d)
@@ -23,12 +11,12 @@ def search(d):
 	if get_entity_type() == Entities.Treasure:
 		return True
 	
-	cands = dirs_without(anti(d))
+	cands = pos.dirs_without(pos.anti(d))
 	for c in cands:
 		ok = search(c)
 		if ok:
 			return True
-	move(anti(d))
+	move(pos.anti(d))
 	return False
 	
 
@@ -43,7 +31,7 @@ def init():
 	
 def run():
 	gen_maze()
-	for d in dirs:
+	for d in pos.DIRS:
 		found = search(d)
 		if found:
 			harvest()

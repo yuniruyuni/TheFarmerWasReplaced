@@ -5,6 +5,9 @@ def is_bush(x, y):
 	is_y_odd = (y%2 == 0)
 	return (is_x_odd == is_y_odd)
 
+def amount():
+	return num_items(Items.Wood)
+
 def init():
 	pass
 

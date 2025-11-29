@@ -6,22 +6,40 @@ import sunflower
 import fertilizer
 import weird
 import maze
+import companion
+import cactus
+import dinosaur
 
 MODES = [
   grass,
   tree,
   carrot,
   weird,
-  fertilizer,
   sunflower,
   pumpkin,
   maze,
+  companion,
+  cactus,
+  dinosaur,
 ]
 
+def least_amount_module():
+	lm = MODES[0]
+	la = lm.amount()
+	for m in MODES[1:]:
+		a = m.amount()
+		if a < la:
+			lm = m
+			la = a			
+	return lm
+
+last = None
+
 while True:
-	for mode in MODES:
+	m = least_amount_module()
+	if last != m:
 		clear()
 		do_a_flip()
-		mode.init()
-		for i in range(10):
-			mode.run()
+		m.init()
+		last = m
+	m.run()

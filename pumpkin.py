@@ -1,5 +1,8 @@
 import foreach
 
+def amount():
+	return num_items(Items.Pumpkin)
+
 def init():
 	def do(s, x, y):
 		till()

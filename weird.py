@@ -1,5 +1,8 @@
 import foreach
 
+def amount():
+	return num_items(Items.Weird_Substance)
+
 def init():
 	def do(s, x, y):
 		if can_harvest():

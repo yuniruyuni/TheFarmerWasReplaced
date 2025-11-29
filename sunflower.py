@@ -1,19 +1,9 @@
 import foreach
+import pos
 
+def amount():
+	return num_items(Items.Power)
 
-def move_to(tx, ty):
-	cx, cy = get_pos_x(), get_pos_y()
-	
-	for y in range(cy):
-		move(South)
-	for x in range(cx):
-		move(West)
-	
-	for y in range(ty):
-		move(North)
-	for x in range(tx):
-		move(East)
-	
 def init():
 	def do(s, x, y):
 		till()
@@ -51,9 +41,9 @@ def run():
 	fs = sort_by_height(fs)
 	for f in fs:
 		x, y, h = f
-		move_to(x, y)
+		pos.moves_to(x, y)
 		harvest()
-	move_to(0, 0)
+	pos.moves_to(0, 0)
 	
 	def replant(s, x, y):
 		plant(Entities.Sunflower)

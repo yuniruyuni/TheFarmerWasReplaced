@@ -1,5 +1,8 @@
 import foreach
 
+def amount():
+	return num_items(Items.Carrot)
+
 def init():
 	def do(s, x, y):
 		till()
